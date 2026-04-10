@@ -4,7 +4,7 @@ const slides = [
   {
     tag: "Consulenza patrimoniale",
     title: "Tiziano Dall’Omo",
-    text: "Economista, gemmologo, analista finanziario e tecnico psicologo.",
+    text: "Economista, analista finanziario e collezionista d'arte.",
   },
   {
     tag: "Gestione e protezione del patrimonio",
@@ -14,7 +14,7 @@ const slides = [
   {
     tag: "Metodo professionale",
     title: "Esperienza, riservatezza, competenza",
-    text: "Un lavoro costruito su precisione, continuità del rapporto e capacità di operare senza errori nei contesti più delicati.",
+    text: "Un lavoro costruito su precisione, continuità del rapporto e capacità di operare nei contesti più delicati.",
   },
 ];
 
@@ -53,8 +53,7 @@ export default function Hero() {
 
           <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300">
             La sua storia accademica è lunga e piena di titoli di studio,
-            compresa una Licenza in Teologia biblica. Oggi svolge consulenze di
-            gestione e protezione del patrimonio per clienti selezionati.
+            compresa una Licenza in Teologia biblica. Molte persone si rivolgono a lui per le questioni più delicate.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
