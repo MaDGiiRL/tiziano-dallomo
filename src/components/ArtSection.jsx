@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
-import Panel from "./Panel";
 import SectionTitle from "./SectionTitle";
+import {
+  Image as ImageIcon,
+  ChevronLeft,
+  ChevronRight,
+  Expand,
+  Grid3X3,
+} from "lucide-react";
 
 const ITEMS_PER_PAGE = 6;
 
-export default function ArtSection({ literaryWorks, paintings }) {
+export default function ArtSection({ paintings }) {
   const [active, setActive] = useState(0);
   const [page, setPage] = useState(0);
 
@@ -25,123 +31,112 @@ export default function ArtSection({ literaryWorks, paintings }) {
   );
 
   return (
-    <>
-      <section className="mt-10 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-        <Panel title="Opere letterarie">
-          <div className="grid gap-3">
-            {literaryWorks.map((work) => (
-              <div
-                key={work}
-                className="rounded-[18px] border border-slate-700/60 bg-slate-950/50 px-4 py-4 text-slate-200"
-              >
-                {work}
-              </div>
-            ))}
-          </div>
-        </Panel>
+    <section
+      id="quadri"
+      className="mt-10 rounded-[32px] border border-slate-700/60 bg-slate-900/55 p-6 md:p-8 xl:p-10"
+    >
+      <SectionTitle
+        eyebrow="Esposizione dei quadri"
+        title="Una galleria dedicata alla produzione pittorica"
+      />
 
-        <Panel title="Opere pittoriche">
-          <p className="text-sm leading-7 text-slate-300">
-            La sua esperienza pittorica nasce da bambino e concentra il lavoro
-            su un tema unico, il diavolo, per dare rappresentazione a paure e
-            blocchi ancestrali.
-          </p>
-          <p className="mt-4 text-sm leading-7 text-slate-300">
-            L’accezione deriva dal verbo greco διαβαλλω, che significa “mettersi
-            per traverso”. Quando dipinge, vive un’esperienza fisica intensa che
-            sente come espressione di sé e regressione all’infanzia.
-          </p>
-        </Panel>
-      </section>
-
-      <section id="quadri" className="mt-10 section-shell p-7 md:p-10">
-        <SectionTitle
-          eyebrow="Esposizione dei quadri"
-          title="Una galleria dedicata alla produzione pittorica"
-          description="Le immagini vanno inserite nella cartella public/opere come img_1.png, img_2.png e così via."
-        />
-
-        <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          {/* OPERA PRINCIPALE */}
-          <div className="overflow-hidden rounded-[28px] border border-slate-700/60 bg-slate-950/60 p-3">
-            <div className="flex h-[520px] items-center justify-center rounded-[22px] bg-slate-950">
-              <img
-                src={activePainting.image}
-                alt={activePainting.title}
-                className="max-h-full max-w-full object-contain"
-              />
-            </div>
-          </div>
-
-          {/* COLONNA DESTRA */}
-          <div className="flex flex-col justify-between rounded-[28px] border border-slate-700/60 bg-slate-950/50 p-6">
-            <div>
-              <div className="text-xs uppercase tracking-[0.22em] text-slate-400">
-                Opera in evidenza
-              </div>
-
-              <h3 className="mt-3 text-3xl font-semibold text-white">
-                {activePainting.title}
-              </h3>
-
-              <p className="mt-4 text-sm leading-7 text-slate-300">
-                Rotazione automatica delle opere per una visione ordinata e
-                progressiva.
-              </p>
-            </div>
-
-            {/* MINIATURE SIMMETRICHE */}
-            <div className="mt-8 grid grid-cols-3 gap-3">
-              {visiblePaintings.map((painting, index) => {
-                const realIndex = page * ITEMS_PER_PAGE + index;
-
-                return (
-                  <button
-                    key={painting.image}
-                    onClick={() => setActive(realIndex)}
-                    className={`overflow-hidden rounded-2xl border p-2 transition ${
-                      active === realIndex
-                        ? "border-sky-300 bg-slate-900"
-                        : "border-slate-700 bg-slate-950/80"
-                    }`}
-                  >
-                    <div className="flex aspect-square items-center justify-center rounded-xl bg-slate-950">
-                      <img
-                        src={painting.image}
-                        alt={painting.title}
-                        className="max-h-full max-w-full object-contain"
-                      />
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* PAGINAZIONE */}
-            <div className="mt-6 flex items-center justify-between">
-              <button
-                onClick={() =>
-                  setPage((prev) => (prev - 1 + totalPages) % totalPages)
-                }
-                className="rounded-xl border border-slate-700 px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-800"
-              >
-                ←
-              </button>
-
-              <div className="text-sm text-slate-400">
-                {page + 1} / {totalPages}
-              </div>
-
-              <button
-                onClick={() => setPage((prev) => (prev + 1) % totalPages)}
-                className="rounded-xl border border-slate-700 px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-800"
-              >
-                →
-              </button>
-            </div>
+      <div className="mt-8 grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
+        {/* OPERA PRINCIPALE */}
+        <div className="overflow-hidden rounded-[30px] border border-slate-700/60 bg-slate-950/70 p-3">
+          <div className="relative h-[360px] rounded-[24px] bg-[radial-gradient(circle_at_center,rgba(15,23,42,0.65),rgba(2,6,23,1))] md:h-[480px] xl:h-[560px]">
+            <img
+              src={activePainting.image}
+              alt={activePainting.title}
+              className="absolute inset-0 h-full w-full p-4 object-contain"
+            />
           </div>
         </div>
-      </section>
-    </>
+
+        {/* SIDEBAR */}
+        <aside className="flex flex-col rounded-[30px] border border-slate-700/60 bg-slate-950/55 p-5 md:p-6">
+          {/* HEADER */}
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 text-slate-400">
+                <ImageIcon className="h-4 w-4 text-sky-300" />
+                <span className="text-[11px] uppercase tracking-[0.22em]">
+                  Opera in evidenza
+                </span>
+              </div>
+
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white md:text-3xl">
+                {activePainting.title}
+              </h3>
+            </div>
+
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-slate-700/70 bg-slate-900/90">
+              <Expand className="h-4 w-4 text-sky-300" />
+            </div>
+          </div>
+
+          <div className="mt-6 h-px w-full bg-gradient-to-r from-sky-400/20 via-slate-600/40 to-transparent" />
+
+          {/* INFO */}
+          <div className="mt-6 flex items-center gap-2 text-slate-400">
+            <Grid3X3 className="h-4 w-4 text-sky-300" />
+            <span className="text-sm">
+              Selezione opere · Pagina {page + 1} di {totalPages}
+            </span>
+          </div>
+
+          {/* MINIATURE */}
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-3">
+            {visiblePaintings.map((painting, index) => {
+              const realIndex = page * ITEMS_PER_PAGE + index;
+
+              return (
+                <button
+                  key={painting.image}
+                  onClick={() => setActive(realIndex)}
+                  className={`group overflow-hidden rounded-2xl border p-2 transition ${
+                    active === realIndex
+                      ? "border-sky-300 bg-slate-900"
+                      : "border-slate-700/70 bg-slate-950/80 hover:border-sky-400/30 hover:bg-slate-900/80"
+                  }`}
+                >
+                  <div className="relative aspect-square rounded-xl bg-slate-950">
+                    <img
+                      src={painting.image}
+                      alt={painting.title}
+                      className="absolute inset-0 h-full w-full p-2 object-contain transition duration-300 group-hover:scale-[1.02]"
+                    />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* NAV */}
+          <div className="mt-6 flex items-center justify-between gap-3">
+            <button
+              onClick={() =>
+                setPage((prev) => (prev - 1 + totalPages) % totalPages)
+              }
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 bg-slate-900/80 px-4 py-2 text-sm text-slate-200 transition hover:bg-slate-800"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Prec.
+            </button>
+
+            <div className="text-sm text-slate-400">
+              {page + 1} / {totalPages}
+            </div>
+
+            <button
+              onClick={() => setPage((prev) => (prev + 1) % totalPages)}
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-700/70 bg-slate-900/80 px-4 py-2 text-sm text-slate-200 transition hover:bg-slate-800"
+            >
+              Succ.
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
   );
 }

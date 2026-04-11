@@ -30,7 +30,7 @@ export const highlightCards = [
   },
   {
     title: "Percorso",
-    text: "Dopo aver lavorato decenni nel campo dei preziosi con incarichi prestigiosi per la Certificazione della Qualità del Gioiello per brand mondiali, oggi svolge consulenze di gestione e protezione del patrimonio in tutto il mondo.",
+    text: "Dopo aver lavorato decenni nel campo dei preziosi, oggi svolge consulenze sul patrimonio in tutto il mondo.",
   },
   {
     title: "Clienti",
