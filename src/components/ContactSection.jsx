@@ -26,10 +26,6 @@ export default function ContactSection() {
             Riferimenti diretti
           </h2>
 
-          <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300 md:text-[15px]">
-            Per richieste di contatto e consulenza, con un’impostazione chiara,
-            riservata e professionale.
-          </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
